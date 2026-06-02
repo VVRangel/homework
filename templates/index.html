@@ -1,177 +1,142 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Камень Ножницы Бумага</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .container {
-            background: white;
-            width: 100%;
-            max-width: 800px;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-            text-align: center;
-        }
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-        h1 {
-            font-size: 42px;
-            color: #333;
-            margin-bottom: 10px;
-        }
+.container{
+    width:500px;
+    max-width:95%;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
 
-        .subtitle {
-            color: #666;
-            margin-bottom: 35px;
-            font-size: 18px;
-        }
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
 
-        .game-form {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+form{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
 
-        .choice-btn {
-            width: 180px;
-            height: 180px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
+input{
+    flex:1;
+    padding:12px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+}
 
-        .choice-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-        }
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    background:#667eea;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
 
-        .emoji {
-            font-size: 60px;
-        }
+button:hover{
+    opacity:0.9;
+}
 
-        .rock {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
+.task{
+    background:#f4f4f4;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        .scissors {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
+.actions{
+    display:flex;
+    gap:8px;
+}
 
-        .paper {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
+.edit{
+    background:#3b82f6;
+    color:white;
+    padding:7px 10px;
+    border-radius:8px;
+    text-decoration:none;
+}
 
-        .result-card {
-            margin-top: 40px;
-            background: #f5f5f5;
-            border-radius: 20px;
-            padding: 25px;
-        }
+.edit:hover{
+    background:#2563eb;
+}
 
-        .choice-box {
-            display: inline-block;
-            margin: 10px 20px;
-        }
+.delete{
+    background:#ef4444;
+    color:white;
+    padding:7px 10px;
+    border-radius:8px;
+    text-decoration:none;
+}
 
-        .choice-box h3 {
-            color: #555;
-            margin-bottom: 10px;
-        }
+.delete:hover{
+    background:#dc2626;
+}
 
-        .choice-box p {
-            font-size: 24px;
-            font-weight: bold;
-        }
+.empty{
+    text-align:center;
+    color:gray;
+    margin-top:20px;
+}
+</style>
 
-        .vs {
-            font-size: 40px;
-            margin: 20px 0;
-        }
-
-        .result-text {
-            margin-top: 25px;
-            font-size: 32px;
-            font-weight: bold;
-            color: #4f46e5;
-        }
-    </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🎮 Камень Ножницы Бумага</h1>
-    <p class="subtitle">
-        Выберите свой ход и попробуйте победить компьютер!
-    </p>
 
-    <form method="POST" class="game-form">
-        <button class="choice-btn rock" type="submit" name="choice" value="Камень">
-            <span class="emoji">✊</span>
-            <span>Камень</span>
-        </button>
+    <h1>📝 To-Do List</h1>
 
-        <button class="choice-btn scissors" type="submit" name="choice" value="Ножницы">
-            <span class="emoji">✌️</span>
-            <span>Ножницы</span>
-        </button>
-
-        <button class="choice-btn paper" type="submit" name="choice" value="Бумага">
-            <span class="emoji">✋</span>
-            <span>Бумага</span>
-        </button>
+    <form method="POST">
+        <input type="text" name="task" placeholder="Enter task..." required>
+        <button type="submit">Add</button>
     </form>
 
-    {% if result %}
-    <div class="result-card">
-        <div class="choice-box">
-            <h3>Ваш выбор</h3>
-            <p>{{ player_choice }}</p>
-        </div>
+    {% if tasks %}
+        {% for task in tasks %}
+        <div class="task">
+            <span>{{ task }}</span>
 
-        <div class="vs">⚔️</div>
-
-        <div class="choice-box">
-            <h3>Компьютер</h3>
-            <p>{{ computer_choice }}</p>
+            <div class="actions">
+                <a class="edit" href="/edit/{{ loop.index0 }}">Edit</a>
+                <a class="delete" href="/delete/{{ loop.index0 }}">Delete</a>
+            </div>
         </div>
-
-        <div class="result-text">
-            {% if "победили" in result %}
-                🏆 {{ result }}
-            {% elif "Ничья" in result %}
-                🤝 {{ result }}
-            {% else %}
-                💀 {{ result }}
-            {% endif %}
-        </div>
-    </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">No tasks yet 🚀</p>
     {% endif %}
+
 </div>
 
 </body>
